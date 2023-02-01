@@ -8,24 +8,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import note_def as nd
 
-ref_A4 = float(input("Enter your relative base pitch of A4 in Hz: "))
-test_file = "C:/Users/matti/Desktop/VScode/Final Project/surfrock.wav"
-
-# Dictionary containing stepwise instructions for constructing a scale
-# using the Note() class defined .pitchconv() method
-mode = {"ionian": [0, 2, 2, 1, 2, 2, 2, 1],
-        "dorian": [0, 2, 1, 2, 2, 2, 1, 2],
-        "phrygian": [0, 1, 2, 2, 2, 1, 2, 2],
-        "lydian": [0, 2, 2, 2, 1, 2, 2, 1],
-        "myxolodian": [0, 2, 2, 1, 2, 2, 1, 2],
-        "aeolian": [0, 2, 1, 2, 2, 1, 2, 2],
-        "locrian": [0, 1, 2, 2, 1, 2, 2, 2], 
-        "chromatic": [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
-
-# Construct our reference Note() and Scale() objects from the input frequency for A4
-note_A = nd.Note("A", ref_A4, 4)
-A_chromatic = nd.Scale("Chromatic", note_A, mode["chromatic"])
-
 class Wave:
     """
     Class that opens a `.wav` file and subsequently an audio stream from which
@@ -108,6 +90,23 @@ class Wave:
         scale.\n
         Takes as input: (`peak distance: float`)
         """
+        ref_A4 = float(input("Enter your relative base pitch of A4 in Hz: "))
+
+        # Dictionary containing stepwise instructions for constructing a scale
+        # using the Note() class defined .pitchconv() method
+        mode = {"ionian": [0, 2, 2, 1, 2, 2, 2, 1],
+                "dorian": [0, 2, 1, 2, 2, 2, 1, 2],
+                "phrygian": [0, 1, 2, 2, 2, 1, 2, 2],
+                "lydian": [0, 2, 2, 2, 1, 2, 2, 1],
+                "myxolodian": [0, 2, 2, 1, 2, 2, 1, 2],
+                "aeolian": [0, 2, 1, 2, 2, 1, 2, 2],
+                "locrian": [0, 1, 2, 2, 1, 2, 2, 2], 
+                "chromatic": [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+
+        # Construct our reference Note() and Scale() objects from the input frequency for A4
+        note_A = nd.Note("A", ref_A4, 4)
+        A_chromatic = nd.Scale("Chromatic", note_A, mode["chromatic"])
+
         plt.style.use('dark_background')
 
         # Set matplotlib subplots with correct chunk size buffer for writing
@@ -177,5 +176,6 @@ The dictionary prints in order of generation and is unsorted
 """
 
 # Calling the functions with trial and error determined test values
+test_file = "C:/Users/matti/Desktop/VScode/Final Project/surfrock.wav"
 audio_test = Wave(test_file)
 audio_test.fft_plot(2000)
