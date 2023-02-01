@@ -21,3 +21,4 @@ This module contains two classes from which to generate note and scale objects b
 #### audio.py
 
 This is the main functionality module. The Wave() class object opens a pyaudio stream from any .wav file (directory needs to be explicited) and takes microphone input to graph either time or frequency domain information. The frequency domain information will also return the value of the first peak frequency and plot it while printing to console the name of the closest note in the Scale() object. This is by default set to the chromatic scale. While not how pitch detection truly works, the output results are nevertheless comparable to results achieved on this [pitch detector](https://www.onlinemictest.com/tuners/pitch-detector/).
+Peak plotting was contributed to by user: Jody Klymak on [StackOverflow](https://stackoverflow.com/questions/75279106/how-do-i-find-plot-and-output-the-peaks-of-a-live-plotted-fast-fourier-transfo/75279677#75279677).
